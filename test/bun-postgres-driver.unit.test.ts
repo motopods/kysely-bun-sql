@@ -91,7 +91,7 @@ describe("BunPostgresDriver (unit)", () => {
 
 		// The value passed to unsafe() should be the wrapped array parameter, not the raw array
 		const [, firstParams] = unsafe.mock.calls[0] as [string, unknown[]];
-		expect(Array.isArray(firstParams?.[0])).toBe(false);
+		expect(firstParams[0]).toBe(array.mock.results[0].value);
 
 		await driver.releaseConnection(conn);
 	});
